@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import boxes from "./boxes";
+import Box from "./Box";
+import "./style.css";
 
-function App() {
+export default function App() {
+  const [boxesArray, setBoxesArray] = React.useState(boxes);
+
+  function toggle(id) {
+    console.log("toggle button clicked");
+  }
+
+  const squares = boxesArray.map((square) => (
+    <Box key={square.id} id={square.id} on={square.on} handleClick={toggle} />
+  ));
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>{squares}</main>
+    //hhghgh
   );
 }
 
-export default App;
+//create a state for the boxes array
+//Then we need to map over the boxes array and display them in the page
+// then  set the background of each box based on if "on" is true : false
