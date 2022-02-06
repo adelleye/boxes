@@ -5,9 +5,20 @@ import "./style.css";
 
 export default function App() {
   const [boxesArray, setBoxesArray] = React.useState(boxes);
+  console.log(boxes[0].id);
 
   function toggle(id) {
     console.log("toggle button clicked");
+    console.log(id);
+    /*
+    loop through boxes array?
+    if id is equal to boxesArray.id then change the square.on to opposite?
+    */
+    for (var i = 0; i < boxesArray.length; i++) {
+      if (id === boxesArray[i].id) {
+        console.log(!boxesArray[i].on);
+      }
+    }
   }
 
   const squares = boxesArray.map((square) => (
