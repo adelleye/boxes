@@ -14,11 +14,24 @@ export default function App() {
     loop through boxes array?
     if id is equal to boxesArray.id then change the square.on to opposite?
     */
-    for (var i = 0; i < boxesArray.length; i++) {
-      if (id === boxesArray[i].id) {
-        console.log(!boxesArray[i].on);
+    setBoxesArray((prevBox) => {
+      const newBoxesArray = [];
+
+      for (let i = 0; i < prevBox.length; i++) {
+        const currentBox = prevBox[i];
+        if (id === currentBox.id) {
+          const updatedBox = {
+            ...currentBox,
+            on: !currentBox.on,
+          };
+          newBoxesArray.push(updatedBox);
+        } else {
+          console.log("hello world");
+          newBoxesArray.push(currentBox);
+        }
       }
-    }
+      return newBoxesArray;
+    });
   }
 
   const squares = boxesArray.map((square) => (
